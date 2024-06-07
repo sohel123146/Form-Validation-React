@@ -17,13 +17,11 @@ export default function Form(props) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const updateFormData = {...formData,[name]: value}
+    setFormData(updateFormData);
 
     // Trigger validation on field change
-    validate({ ...formData, [name]: value });
+    validate(updateFormData);
   };
 
   const validate = (data) => {
@@ -76,7 +74,7 @@ export default function Form(props) {
         email: '',
         password: '',
       });
-      setFormData(null)
+      setPreviewData(null)
     }
   };
 
@@ -146,7 +144,7 @@ export default function Form(props) {
       </form>
       <button className='btn btn-primary mt-3'onClick={handlePreview}>Click to preview</button>
       {previewData &&
-      <div className='preview mt-4'>
+      <div className='preview mt-4' style={myStyle}>
         <p><strong>Full Name : </strong>{previewData.fullname}</p>
         <p><strong>Email : </strong>{previewData.email}</p>
         <p><strong>Password : </strong>{previewData.password}</p>
