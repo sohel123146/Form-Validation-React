@@ -140,9 +140,9 @@ export default function Form(props) {
           />
           {error.password && <div className='text-danger'>{error.password}</div>}
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+          <button disabled={formData.fullname.length === 0 || formData.email.length === 0} type="submit" className="btn btn-primary">Submit</button>
       </form>
-      <button className='btn btn-primary mt-3'onClick={handlePreview}>Click to preview</button>
+      <button disabled={formData.fullname.length === 0 || formData.email.length === 0} className='btn btn-primary mt-3'onClick={handlePreview}>Click to preview</button>
       {previewData &&
       <div className='preview mt-4' style={myStyle}>
         <p><strong>Full Name : </strong>{previewData.fullname}</p>
